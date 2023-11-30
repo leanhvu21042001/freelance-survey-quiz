@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <title>Metabolic Reboot Quiz</title>
+
+    <style>
+      body {
+        font-family: "Open Sans", Helvetica, sans-serif;
+      }
+
+      .answers .answer-item label {
+        margin-left: 1rem;
+        cursor: pointer;
+        transition: 100ms;
+      }
+
+      .answers .answer-item label:hover,
+      .answers .answer-item label:focus {
+        margin-left: 0rem;
+        background-color: #def2fa;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.16) !important;
+      }
+
+      .result-box {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: rgba(0, 0, 0, 0.03)">
+    <header>
+      <h1 class="text-center">LOGO</h1>
+    </header>
+    <div class="container-md">
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <!-- Quiz Box -->
+          <div class="quiz-box">
+            <div class="card shadow-lg p-5 mb-5 rounded border-0">
+              <div class="card-header bg-transparent border-0">
+                <h2 class="fs-1 fw-bolder text-center" style="color: #606060">
+                  FREE QUIZ: What's Your Metabolic Profile?
+                </h2>
+                <h3 class="fs-2 text-center" style="color: #42b99f">
+                  Discover How to <u><i>Reboot</i></u> Your Metabolism Based on
+                  Your Metabolic Profile...
+                </h3>
+                <h4 class="fs-4 text-center" style="color: #003049">
+                  And learn what food you should be eating to feel full, feel
+                  better and get energized.
+                </h4>
+                <button
+                  class="btn fs-5 text-white fw-bolder w-100 mt-3"
+                  style="background-color: #00b48c"
+                >
+                  Yes! Start QUIZ!
+                </button>
+              </div>
+              <div class="mt-5 card-content">
+                <div class="question-wrapper">
+                  <div class="fs-2 text-center question"></div>
+                  <div class="fs-5 text-center description"></div>
+                  <div class="progress my-4"></div>
+                  <div class="answers">
+                    <div class="answer-item"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Box -->
+          <div class="result-box">
+            <div class="card shadow-lg p-5 mb-5 rounded border-0">
+              <div class="card-header bg-transparent border-0">
+                <h2
+                  class="fs-1 fw-bolder text-center"
+                  style="color: #606060; font-size: 4vw !important"
+                >
+                  CONGRATULATIONS!
+                </h2>
+                <h3
+                  class="fs-2 text-center"
+                  style="color: #42b99f; font-size: 2.7vw !important"
+                >
+                  Your Metabolic Profile is:
+                </h3>
+                <h4
+                  class="fs-5 text-center metabolic-profile"
+                  style="color: #e43b2c; font-size: 4vw !important"
+                >
+                  MT1CL
+                </h4>
+                <h4 class="fs-4 text-center" style="color: #003049">
+                  Where Should We Send Your Customized Metabolic Reboot Plan to?
+                </h4>
+              </div>
+
+              <script type="text/javascript">
+                var submitted = false;
+              </script>
+              <iframe
+                id="hidden_iframe"
+                name="hidden_iframe"
+                onload="if(submitted){
+                    const urlParts = window.location.href.split('?rsk=');
+                    const key = urlParts[1];
+                    console.log({key,});
+                    const links = {
+                        'mt1clogczq2ca': '/optin1616480553434',
+                        'mt2dlquip7omu': '/optin1616481283257',
+                        'mt3fl5t4ww805': '/optin1616482044588',
+                    }
+                    window.location.replace(links[key]);
+                }"
+                style="display: none"
+              ></iframe>
+              <script type="text/javascript">
+                var submitted = false;
+              </script>
+              <form
+                onsubmit="submitted=true;"
+                target="hidden_iframe"
+                class="mt-5 card-content"
+                role="form"
+                method="GET"
+                action="https://script.google.com/macros/s/AKfycbybDxlxFOe54T3ueloeGa6_paRqDl5XBP4xthn9A5ZQuyaTjFuz08-CqeG2QwizRvt5/exec"
+              >
+                <div class="result-wrapper">
+                  <div class="input-group input-group-lg mb-4">
+                    <input
+                      type="text"
+                      class="form-control fs-6"
+                      id="user_fullname"
+                      name="user_fullname"
+                      placeholder="Your Name Here..."
+                      autocomplete
+                    />
+                  </div>
+                  <div class="input-group input-group-lg mb-4">
+                    <input
+                      type="email"
+                      class="form-control fs-6"
+                      id="user_email"
+                      name="user_email"
+                      placeholder="Your Email Address Here..."
+                      autocomplete
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-lg fw-bold w-100 fs-3"
+                    style="
+                      background-color: #e43b2c;
+                      color: #fff;
+                      box-shadow: inset 0 1px 0 rgb(255 255 255 / 20%);
+                      border: 1px solid rgba(0, 0, 0, 0.2);
+                    "
+                  >
+                    YES! Send Me My Metabolic Reboot Plan NOW!
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        //  ########## Script handle UI Question Answer ##########  //
+
+        // Global Select element
+        const questionLabel = document.querySelector(
+          ".question-wrapper .question"
+        );
+        const questionDescription = document.querySelector(
+          ".question-wrapper .description"
+        );
+        const questionProgress = document.querySelector(
+          ".question-wrapper .progress"
+        );
+        const questionAnswerItem = document.querySelector(
+          ".question-wrapper .answer-item"
+        );
+
+        const result = []; // sample: [{question_id: 1, answer_id: 1}]
+        // Magic Questions: Thay đổi câu hỏi mong muốn ở đây.
+        const questions = [
+          {
+            question_id: 1,
+            question_label: "How old are you?",
+            question_description:
+              "We want to find the most appropriate strategy for you as different age group tend to have different needs.",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label: "18 - 25",
+              },
+              {
+                answer_id: 2,
+                answer_label: "26 - 35",
+              },
+              {
+                answer_id: 3,
+                answer_label: "36 - 45",
+              },
+              {
+                answer_id: 4,
+                answer_label: "46 - 55",
+              },
+              {
+                answer_id: 5,
+                answer_label: "56 - 65",
+              },
+              {
+                answer_id: 6,
+                answer_label: "65+",
+              },
+            ],
+          },
+          {
+            question_id: 2,
+            question_label: "What's your gender?",
+            question_description:
+              "We ask because men and women tend to need different solutions for their metabolic profile...",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label: "Man",
+              },
+              {
+                answer_id: 2,
+                answer_label: "Woman",
+              },
+            ],
+          },
+          {
+            question_id: 3,
+            question_label:
+              "When it comes to health goals, men and women may have different priorities. What is your single biggest health goal right now?",
+            question_description:
+              "Great progress! Having a goal means that you're 90% ahead of most people.",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label: "Shed Pounds.",
+              },
+              {
+                answer_id: 2,
+                answer_label: "Build Muscles.",
+              },
+              {
+                answer_id: 3,
+                answer_label: "Tone my body and improve my overall health.",
+              },
+            ],
+          },
+          {
+            question_id: 4,
+            question_label: "Which of these BEST describes how you FEEL?",
+            question_description:
+              "Whether it is to shed pounds, burn fat, build muscles or to improve overall health. Your mood is the KEY.",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label:
+                  "I feel great overall, but when I get stressed, it easily affects my mood, sleep, energy, and hunger.",
+              },
+              {
+                answer_id: 2,
+                answer_label:
+                  "I tend to be anxious and stressed, I have a hard time sleeping, and I sometimes forget to eat.",
+              },
+              {
+                answer_id: 3,
+                answer_label:
+                  "I am often tired, and this affects my focus. I am constantly hungry and thinking about food.",
+              },
+            ],
+          },
+          {
+            question_id: 5,
+            question_label:
+              "Which of the following best describes your typical lunch?",
+            question_description:
+              "Forget about fad diets, a well balanced meal plate will have more impact on your health goals.",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label:
+                  "I tend to eat pizza, sandwiches, wraps, pasta, or/and fries. These are comfort foods, and it keeps me full.",
+              },
+              {
+                answer_id: 2,
+                answer_label:
+                  "I love chicken, eggs, fish and all kinds of animal protein. I can't imagine myself living without meat.",
+              },
+              {
+                answer_id: 3,
+                answer_label:
+                  "I eat mostly salads, fruits and soup. I tend to avoid processed food as much as I can.",
+              },
+              {
+                answer_id: 4,
+                answer_label:
+                  "I am a vegan. I do make sure my plate has all the nutrients I need throughout the day like carbs, protein and fats.",
+              },
+            ],
+          },
+          {
+            question_id: 6,
+            question_label:
+              "Which of the following best describes your typical eating schedule?",
+            question_description:
+              "It's not just WHAT you eat that affects your metabolism; how OFTEN you eat will have a huge impact as well.",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label: "I always make sure I eat 3 meals a day.",
+              },
+              {
+                answer_id: 2,
+                answer_label: "I eat 3 meals a day. (Plus snacks in between.)",
+              },
+              {
+                answer_id: 3,
+                answer_label:
+                  "It depends. Sometimes, I eat more than 3 meals a day or less. It all depends on my mood or how busy I am in a day.",
+              },
+            ],
+          },
+          {
+            question_id: 7,
+            question_label: "What types of food do you crave often?",
+            question_description: "",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label: "Sweet",
+              },
+              {
+                answer_id: 2,
+                answer_label: "Salty",
+              },
+              {
+                answer_id: 3,
+                answer_label: "Both",
+              },
+            ],
+          },
+          {
+            question_id: 8,
+            question_label:
+              "When it comes to physical activity, how would you describe your current exercise habits?",
+            question_description: "",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label:
+                  "Highly active (I work out more than 3 times a week)",
+              },
+              {
+                answer_id: 2,
+                answer_label:
+                  "Moderately active ( I engage in physical activity 1 to 2 times a week)",
+              },
+              {
+                answer_id: 3,
+                answer_label:
+                  "Slightly active (I try to exercise only when I can)",
+              },
+              {
+                answer_id: 4,
+                answer_label: "Not active ( I rarely exercise.)",
+              },
+            ],
+          },
+          {
+            question_id: 9,
+            question_label:
+              "What is the biggest challenge for you when it comes to exercise?",
+            question_description:
+              "Exercise is not a must, but it's required for a healthy living. Plus, there's more upside than down side too..",
+            answers: [
+              {
+                answer_id: 1,
+                answer_label:
+                  "I have an injury that makes exercising a big challenge.",
+              },
+              {
+                answer_id: 2,
+                answer_label:
+                  "Finding time between family, work, and other commitments.",
+              },
+              {
+                answer_id: 3,
+                answer_label:
+                  "Finding the motivation and the energy to push through with my health goals.",
+              },
+              {
+                answer_id: 4,
+                answer_label:
+                  "I don't see any improvement even when I exercise a lot! So, I stopped.",
+              },
+            ],
+          },
+        ];
+        // Magic results: Thay đổi loại kết quả ở đây và thêm câu hỏi và câu trả lời trong mảng.
+        const metabolic_profile = {
+          MT1CL: {
+            1: [1, 2],
+            2: [1, 2],
+            3: [1],
+            4: [1],
+            5: [1],
+            6: [1],
+            7: [1],
+            8: [1, 2],
+            9: [1, 2],
+          },
+          MT2DL: {
+            1: [3, 4],
+            2: [1, 2],
+            3: [2],
+            4: [2],
+            5: [2],
+            6: [2],
+            7: [2],
+            8: [2, 3],
+            9: [2, 3],
+          },
+          MT3FL: {
+            1: [5, 6],
+            2: [1, 2],
+            3: [3],
+            4: [3],
+            5: [3],
+            6: [3],
+            7: [3],
+            8: [3, 4],
+            9: [3, 4],
+          },
+        };
+        // Magic links: Dùng để chuyển hướng trang và hiển thị ra kết quả.
+        const metabolic_profile_result_links = {
+          MT1CL: "mt1clogczq2ca",
+          MT2DL: "mt2dlquip7omu",
+          MT3FL: "mt3fl5t4ww805",
+        };
+
+        const handleShowResult = (userResult = []) => {
+          const typeTotals = userResult.reduce((acc, question) => {
+            question.types.forEach((type) => {
+              if (!acc[type]) {
+                acc[type] = {
+                  count: 1,
+                  questionAndAnswer: [
+                    {
+                      question_id: question.question_id,
+                      answer_id: question.answer_id,
+                    },
+                  ],
+                };
+              } else {
+                acc[type].count += 1;
+                acc[type].questionAndAnswer.push({
+                  question_id: question.question_id,
+                  answer_id: question.answer_id,
+                });
+              }
+            });
+            return acc;
+          }, {});
+
+          // Find the max value in typeTotals
+          const maxType = Object.keys(typeTotals).reduce((a, b) =>
+            typeTotals[a].count > typeTotals[b].count ? a : b
+          );
+
+          // Redirect the page if the maxType has a count greater than 0
+          if (typeTotals[maxType].count > 0) {
+            window.location.replace(
+              `${window.location.href}?rsk=${metabolic_profile_result_links[maxType]}`
+            );
+          }
+        };
+
+        const handleAddAnswer = (question_id, answer_id) => {
+          const intQuestionId = Number(question_id);
+          const intAnswerId = Number(answer_id);
+
+          // Find question from result. And the question should only one.
+          const isQuestionExits = result.find(
+            (item) => item.question_id === intQuestionId
+          );
+          // If question found, should be return. Do not add to result anymore.
+          if (isQuestionExits) return;
+
+          // [Handle add types to result.]: Loop each of types
+          const types = Object.entries(metabolic_profile)
+            .map(([type = "defaultType", mpTypes = []]) => {
+              // Loop each of question in the type and find the question in this current type.
+              const questionCurrentTypeFound = Object.entries(mpTypes).find(
+                ([mpQuestionKey, mpQuestionValues]) =>
+                  Number(mpQuestionKey) === intQuestionId
+              );
+              if (questionCurrentTypeFound.length === 0) return undefined;
+
+              // Check if current intAnswerId value included in questionCurrentTypeFound value.
+              // Example value of: questionCurrentTypeFound = ['1', [1, 2]]
+              const isAnswerExistsInType = questionCurrentTypeFound
+                .at(1)
+                .includes(intAnswerId);
+
+              if (isAnswerExistsInType) return type;
+
+              return undefined;
+            })
+            .filter((filterValue) => filterValue);
+
+          return result.push({
+            question_id: intQuestionId,
+            answer_id: intAnswerId,
+            types: types,
+          });
+        };
+
+        const renderQuestion = (currentIndexQuestion = 0) => {
+          const questionLabel = document.querySelector(
+            ".question-wrapper .question"
+          );
+          const questionDescription = document.querySelector(
+            ".question-wrapper .description"
+          );
+          const questionProgress = document.querySelector(
+            ".question-wrapper .progress"
+          );
+          const questionAnswerItem = document.querySelector(
+            ".question-wrapper .answer-item"
+          );
+
+          // Handle Data
+          const questionLength = questions.length;
+          const intCurrentIndexQuestion = Number(currentIndexQuestion);
+          const question = questions.at(intCurrentIndexQuestion);
+          const progressPercent =
+            ((intCurrentIndexQuestion + 1) / questionLength) * 100;
+
+          // Return if question less than ONE
+          if (questionLength === 0) return;
+
+          // Show data to UI.
+          questionLabel.innerHTML = `Q${question.question_id}. ${question.question_label}`;
+          questionDescription.innerHTML = `${question.question_description}`;
+          questionProgress.innerHTML = `<div class="progress-bar" role="progressbar" style="width: ${progressPercent}%; background-color: #96bd2c; transition: 100ms;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>`;
+          questionAnswerItem.innerHTML = question.answers
+            .map(
+              ({ answer_id, answer_label }) => `
+                    <label data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" class="w-100 rounded p-2">
+                        <input data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" value="${answer_id}" type="radio" name="answer_of_question_${question.question_id}">
+                        <span data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" class="fs-5">${answer_label}</span>
+                    </label>`
+            )
+            .join("", "");
+        };
+        renderQuestion(0); // render first question
+
+        questionAnswerItem.addEventListener("click", ({ target }) => {
+          const answer_id = target.dataset.answerId;
+          const question_id = target.dataset.questionId;
+          const question_index = target.dataset.questionIndex;
+
+          // If value not exists, that means the click event not in the label or input or span, because we need the values above
+          if (!answer_id || !question_id || !question_index) return;
+
+          //  add answer user was selected.
+          handleAddAnswer(question_id, answer_id);
+
+          if (Number(question_index) !== questions.length) {
+            renderQuestion(question_index);
+          } else {
+            // if the end of question, return result
+            handleShowResult(result);
+          }
+        });
+
+        //  ########## Script handle Show Answer ##########  //
+        const quizBox = document.querySelector(".quiz-box");
+        const resultBox = document.querySelector(".result-box");
+        const metabolicProfile = document.querySelector(".metabolic-profile");
+
+        // Get the URL of the current page
+        const url = new URL(window.location.href);
+        // Get the value of the 'rsk' parameter from the URL
+        const rskValue = url.searchParams.get("rsk");
+
+        if (rskValue) {
+          // show result box and hide quiz box.
+          quizBox.style.display = "none";
+          resultBox.style.display = "block";
+
+          const [key, value] = Object.entries(
+            metabolic_profile_result_links
+          ).find(([key, value]) => value === rskValue);
+
+          // change metabolic-profile by rsk value
+          metabolicProfile.innerHTML = key;
+        } else {
+          quizBox.style.display = "block";
+          resultBox.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
