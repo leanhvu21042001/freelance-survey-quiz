@@ -553,46 +553,49 @@
         };
 
         const renderQuestion = (currentIndexQuestion = 0) => {
-          const questionLabel = document.querySelector(
-            ".question-wrapper .question"
-          );
-          const questionDescription = document.querySelector(
-            ".question-wrapper .description"
-          );
-          const questionProgress = document.querySelector(
-            ".question-wrapper .progress"
-          );
-          const questionAnswerItem = document.querySelector(
-            ".question-wrapper .answer-item"
-          );
+          const MAGIC_TIMEOUT = 500;
+          setTimeout(() => {
+            const questionLabel = document.querySelector(
+              ".question-wrapper .question"
+            );
+            const questionDescription = document.querySelector(
+              ".question-wrapper .description"
+            );
+            const questionProgress = document.querySelector(
+              ".question-wrapper .progress"
+            );
+            const questionAnswerItem = document.querySelector(
+              ".question-wrapper .answer-item"
+            );
 
-          // Handle Data
-          const questionLength = questions.length;
-          const intCurrentIndexQuestion = Number(currentIndexQuestion);
-          const question = questions.at(intCurrentIndexQuestion);
-          const progressPercent =
-            ((intCurrentIndexQuestion + 1) / questionLength) * 100;
+            // Handle Data
+            const questionLength = questions.length;
+            const intCurrentIndexQuestion = Number(currentIndexQuestion);
+            const question = questions.at(intCurrentIndexQuestion);
+            const progressPercent =
+              ((intCurrentIndexQuestion + 1) / questionLength) * 100;
 
-          // Return if question less than ONE
-          if (questionLength === 0) return;
+            // Return if question less than ONE
+            if (questionLength === 0) return;
 
-          // Show data to UI.
-          questionLabel.innerHTML = `Q${question.question_id}. ${question.question_label}`;
-          questionDescription.innerHTML = `${question.question_description}`;
-          questionProgress.innerHTML = `<div class="progress-bar" role="progressbar" style="width: ${progressPercent}%; background-color: #96bd2c; transition: 100ms;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>`;
-          questionAnswerItem.innerHTML = question.answers
-            .map(
-              ({ answer_id, answer_label }) => `
+            // Show data to UI.
+            questionLabel.innerHTML = `Q${question.question_id}. ${question.question_label}`;
+            questionDescription.innerHTML = `${question.question_description}`;
+            questionProgress.innerHTML = `<div class="progress-bar" role="progressbar" style="width: ${progressPercent}%; background-color: #96bd2c; transition: 100ms;" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100"></div>`;
+            questionAnswerItem.innerHTML = question.answers
+              .map(
+                ({ answer_id, answer_label }) => `
                     <label data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" class="w-100 rounded p-2">
                         <input data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" value="${answer_id}" type="radio" name="answer_of_question_${question.question_id}">
                         <span data-answer-id="${answer_id}" data-question-id="${question.question_id}" data-question-index="${question.question_id}" class="fs-5">${answer_label}</span>
                     </label>`
-            )
-            .join("", "");
+              )
+              .join("", "");
+          }, MAGIC_TIMEOUT);
         };
         renderQuestion(0); // render first question
 
-        questionAnswerItem.addEventListener("touchend", ({ target }) => {
+        questionAnswerItem.addEventListener("click", ({ target }) => {
           const answer_id = target.dataset.answerId;
           const question_id = target.dataset.questionId;
           const question_index = target.dataset.questionIndex;
