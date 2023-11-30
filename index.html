@@ -592,7 +592,7 @@
         };
         renderQuestion(0); // render first question
 
-        questionAnswerItem.addEventListener("click", ({ target }) => {
+        questionAnswerItem.addEventListener("mouseup", ({ target }) => {
           const answer_id = target.dataset.answerId;
           const question_id = target.dataset.questionId;
           const question_index = target.dataset.questionIndex;
