@@ -35,25 +35,39 @@
         transition: 100ms;
       }
 
-      .answers .answer-item label:hover,
-      .answers .answer-item label:focus,
-      .answers .answer-item label:active {
-        margin-left: 0rem;
-        background-color: #def2fa;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14),
-          inset 0 0 0 2px rgba(255, 255, 255, 0.16) !important;
+      @media (hover: hover) {
+        .answers .answer-item label:hover {
+          margin-left: 0rem;
+          background-color: #def2fa;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.16) !important;
+        }
       }
-
       .result-box {
         display: none;
       }
+
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        display: none;
+      }
+
+      /* .loading-text {
+        font-size: 24px;
+      } */
     </style>
   </head>
 
   <body style="background-color: rgba(0, 0, 0, 0.03)">
-    <header>
-      <h1 class="text-center">LOGO</h1>
-    </header>
     <div class="container-md">
       <div class="row justify-content-center">
         <div class="col-10">
@@ -122,7 +136,6 @@
                 onload="if(submitted){
                     const urlParts = window.location.href.split('?rsk=');
                     const key = urlParts[1];
-                    console.log({key,});
                     const links = {
                         'mt1clogczq2ca': '/optin1616480553434',
                         'mt2dlquip7omu': '/optin1616481283257',
@@ -142,7 +155,7 @@
                   target="hidden_iframe"
                   role="form"
                   method="GET"
-                  action="https://script.google.com/macros/s/AKfycbybDxlxFOe54T3ueloeGa6_paRqDl5XBP4xthn9A5ZQuyaTjFuz08-CqeG2QwizRvt5/exec"
+                  action="https://script.google.com/macros/s/AKfycbyVexJZjOrEPUgmaXk5kqigrhS0GXFfrAUkHyXpdzP-YMbqc_lROSOgpP1E5S1X3Si7/exec"
                 >
                   <div class="result-wrapper">
                     <div class="input-group input-group-lg mb-4">
@@ -186,6 +199,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <!-- <div class="loading-text">Loading...</div> -->
+    </div>
+
     <script
       src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -209,6 +228,7 @@
         const questionAnswerItem = document.querySelector(
           ".question-wrapper .answer-item"
         );
+        const loadingOverlay = document.getElementById("loadingOverlay");
 
         const result = []; // sample: [{question_id: 1, answer_id: 1}]
         // Magic Questions: Thay đổi câu hỏi mong muốn ở đây.
@@ -591,14 +611,30 @@
                     </label>`
               )
               .join("", "");
+
+            // Hide loading overlay (you can adjust the timeout value based on your needs)
+            loadingOverlay.style.display = "none";
           }, MAGIC_TIMEOUT);
         };
         renderQuestion(0); // render first question
 
         questionAnswerItem.addEventListener("click", ({ target }) => {
+          // Show loading overlay
+          loadingOverlay.style.display = "flex";
+
           const answer_id = target.dataset.answerId;
           const question_id = target.dataset.questionId;
           const question_index = target.dataset.questionIndex;
+
+          // Start: Handle Style for Answer item when we click on the
+          const label = document.querySelector(
+            `[data-answer-id="${answer_id}"]`
+          );
+          label.style.marginLeft = "0rem";
+          label.style.backgroundColor = "#def2fa";
+          label.style.boxShadow =
+            "0 2px 6px rgba(0, 0, 0, 0.14),inset 0 0 0 2px rgba(255, 255, 255, 0.16) !important";
+          // Stop: Handle Style for Answer item when we click on the
 
           // If value not exists, that means the click event not in the label or input or span, because we need the values above
           if (!answer_id || !question_id || !question_index) return;
